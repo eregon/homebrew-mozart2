@@ -32,7 +32,7 @@ class LlvmForMozart2 < Formula
     # Set flags to use libc++ and C++0x headers
     cpp_headers_dir = if MacOS.version >= :mavericks
       "/Library/Developer/CommandLineTools/usr/lib/c++/v1"
-    elsif MacOS.version == :mountain_lion
+    elsif MacOS.version >= :lion
       "/usr/lib/c++/v1"
     else
       raise "No known C++0x headers in this OS X version: #{MacOS.version}"
