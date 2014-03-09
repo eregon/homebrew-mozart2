@@ -2,8 +2,7 @@ require 'formula'
 
 class Mozart2 < Formula
   homepage 'https://github.com/mozart/mozart2'
-  # head 'https://github.com/mozart/mozart2.git' # TODO
-  head 'https://github.com/eregon/mozart2.git', :branch => 'osx'
+  head 'https://github.com/mozart/mozart2.git'
 
   depends_on 'cmake' => :build
   depends_on 'boost' => 'c++11'
