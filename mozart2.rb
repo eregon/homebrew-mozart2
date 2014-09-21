@@ -9,6 +9,7 @@ class Mozart2 < Formula
   depends_on 'emacs'
   depends_on 'llvm_for_mozart2'
   depends_on :x11 # Tcl/Tk
+  depends_on :java => "1.6"
 
   def install
     cmake_args = std_cmake_args.dup
