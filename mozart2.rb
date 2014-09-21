@@ -22,8 +22,8 @@ class Mozart2 < Formula
 
     cmake_args << "-DEMACS=#{emacs_prefix}/bin/emacs"
 
-    cmake_args << "-DCMAKE_C_COMPILER=clang"
-    cmake_args << "-DCMAKE_CXX_COMPILER=clang++"
+    cmake_args << "-DCMAKE_C_COMPILER=/usr/bin/clang"
+    cmake_args << "-DCMAKE_CXX_COMPILER=/usr/bin/clang++"
 
     cmake_args << "-DLLVM_SRC_DIR=#{llvm_prefix}"
     cmake_args << "-DLLVM_BUILD_DIR=#{llvm_prefix}"
