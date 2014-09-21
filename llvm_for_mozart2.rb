@@ -27,14 +27,7 @@ class LlvmForMozart2 < Formula
     cmake_args << "-DCMAKE_BUILD_TYPE=Release"
 
     # Set flags to use libc++ and C++0x headers
-    cpp_headers_dir = if MacOS.version >= :mavericks
-      "/Library/Developer/CommandLineTools/usr/lib/c++/v1"
-    elsif MacOS.version >= :lion
-      "/usr/lib/c++/v1"
-    else
-      raise "No known C++0x headers in this OS X version: #{MacOS.version}"
-    end
-    cmake_args << "-DCMAKE_CXX_FLAGS=-stdlib=libc++ -I#{cpp_headers_dir}"
+    cmake_args << "-DCMAKE_CXX_FLAGS=-stdlib=libc++"
 
     cmake_args << "-DLLVM_TARGETS_TO_BUILD=X86" # try to speed up compilation
 
