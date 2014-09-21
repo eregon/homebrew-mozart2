@@ -5,12 +5,12 @@ require 'formula'
 
 class LlvmForMozart2 < Formula
   homepage 'http://llvm.org/'
-  url 'http://llvm.org/releases/3.5.0/llvm-3.5.0.src.tar.xz'
-  sha1 '58d817ac2ff573386941e7735d30702fe71267d5'
+  url 'http://llvm.org/releases/3.4.2/llvm-3.4.2.src.tar.gz'
+  sha1 'c5287384d0b95ecb0fd7f024be2cdfb60cd94bc9'
 
   resource 'clang' do
-    url 'http://llvm.org/releases/3.5.0/cfe-3.5.0.src.tar.xz'
-    sha1 '834cee2ed8dc6638a486d8d886b6dce3db675ffa'
+    url 'http://llvm.org/releases/3.4.2/cfe-3.4.2.src.tar.gz'
+    sha1 'add5420b10c3c3a38c4dc2322f8b64ba0a5def97'
   end
 
   depends_on 'cmake' => :build
