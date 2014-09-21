@@ -5,7 +5,7 @@ class Mozart2 < Formula
   head 'https://github.com/mozart/mozart2.git'
 
   depends_on 'cmake' => :build
-  depends_on 'boost' => 'c++11'
+  depends_on 'boost'
   depends_on 'emacs'
   depends_on 'llvm_for_mozart2'
   depends_on :x11 # Tcl/Tk
