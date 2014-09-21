@@ -3,25 +3,22 @@ require 'formula'
 # Mozart 2 needs a specific LLVM build since it needs to be linked to libc++
 # and the headers to access the parser.
 
-class ClangForMozart2 < Formula
-  homepage  'http://llvm.org/'
-  url       'http://llvm.org/releases/3.2/clang-3.2.src.tar.gz'
-  sha1      'b0515298c4088aa294edc08806bd671f8819f870'
-end
-
 class LlvmForMozart2 < Formula
   homepage 'http://llvm.org/'
-  url 'http://llvm.org/releases/3.2/llvm-3.2.src.tar.gz'
-  sha1 '42d139ab4c9f0c539c60f5ac07486e9d30fc1280'
+  url 'http://llvm.org/releases/3.5.0/llvm-3.5.0.src.tar.xz'
+  sha1 '58d817ac2ff573386941e7735d30702fe71267d5'
+
+  resource 'clang' do
+    url 'http://llvm.org/releases/3.5.0/cfe-3.5.0.src.tar.xz'
+    sha1 '834cee2ed8dc6638a486d8d886b6dce3db675ffa'
+  end
 
   depends_on 'cmake' => :build
 
   keg_only :provided_by_osx
 
   def install
-    ClangForMozart2.new("clang_for_mozart2").brew do
-      (buildpath/'tools/clang').install Dir['*']
-    end
+    (buildpath/"tools/clang").install resource("clang")
 
     cmake_args = std_cmake_args.dup
 
