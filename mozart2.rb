@@ -29,13 +29,13 @@ class Mozart2 < Formula
     cmake_args << "-DLLVM_BUILD_DIR=#{llvm_prefix}"
 
     # Set flags to use libc++ and C++0x headers
-    cpp_headers_dir = if MacOS.version >= :mavericks
-      "/Library/Developer/CommandLineTools/usr/lib/c++/v1"
-    elsif MacOS.version >= :lion
-      "/usr/lib/c++/v1"
-    else
-      raise "No known C++0x headers in this OS X version: #{MacOS.version}"
-    end
+    cpp_headers_dir = %w[
+      /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1
+      /Library/Developer/CommandLineTools/usr/lib/c++/v1
+      /usr/lib/c++/v1
+    ].find { |dir| File.exist?("#{dir}/forward_list") }
+    raise "Could not find C++0x headers on #{MacOS.version}" unless cpp_headers_dir
+
     cmake_args << "-DCMAKE_CXX_FLAGS=-stdlib=libc++ -I#{cpp_headers_dir}"
 
     p cmake_args # FIXME: remove
